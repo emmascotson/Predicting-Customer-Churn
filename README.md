@@ -24,7 +24,7 @@ We used [Churn in Telecom's dataset](https://www.kaggle.com/datasets/becksddf/ch
 
 Our target valiable is churn, which reflects if a customer terminated contract(1) or did not(0). Target variable is imbalanced, about 15% is class 1 and 85% is class 0. We used SMOTE techniques to balance the data.  
 
-![Class Imbalance](images/class_imbalance)
+![Class Imbalance](images/class_imbalance.png)
 
 ## EDA
 
