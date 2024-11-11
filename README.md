@@ -1,10 +1,8 @@
-# Predicting customer churn for SyriaTel
+# Predicting SyriaTel Customer Churn
 
-This project predicts customer churn in a telecommunication company using machine learning tools to analyze historical data on customer behavior, service usage, and location factors.  
+## Analysis Overview
 
-The goal is to identify patterns that signal when a customer is likely to cancel their service. By leveraging predictive models such as logistic regression or decision trees, the company can proactively intervene with targeted offers or improved services to retain at-risk customers.  
-
-This project will utilize a dataset of SyriaTel customer interactions and subscription details, applying data preprocessing, feature engineering, and model evaluation to develop an accurate churn prediction model. This approach not only enhances customer satisfaction and loyalty but also significantly reduces loss in revenue.  
+This project analyzes data from the telecommunication company SyriaTel, to identify patterns that signal when a customer is likely to cancel their service, or "churn". By leveraging predictive models such as logistic regression or decision trees, the company can proactively intervene with targeted offers or improved services to retain at-risk customers.  
 
 ## Business understanding
 
@@ -20,21 +18,6 @@ Additionally, predictive analytics in churn prevention allows telecom companies 
 
 Syriatel is a telecommunications provider, offering mobile services like domestic and international voice calls, SMS and voice mail to millions of subscribers. The company employs approximately 3,500 employees and serves 8 million customers as of 2016. It is headquartered on Sehnaya Road in Damascus according to [Wikipedia](https://en.wikipedia.org/wiki/Syriatel)
 
-As the main stakeholder, the company will benefit from this analysis by reducing customer churn rates, potentially increasing revenues and profits, promoting growth, and enhancing its market position. Improved customer service will also benefit customer satisfaction rates. As the company grows in revenue, profits, customer base, and market share, shareholders will see greater returns on their investments.
-
-### **Potential Business Questions:** 
-* What were the factors influencing customer churn?
-* Which services have the highest impact on customer churn?
-* What services do customers with longer tenure have?
-* What percentage of customers leave after one month/6 months/1 year?
-* Which state has the highest churn rate?
-* What is the best model for predicting customer churn?
-
-### **Objectives:**
-* identify the key features that determine if a customer is likely to churn
-* determine the most suitable model to predict customer churn
-* give customer retention recommendations to reduce churn
-
 ## Data
 
 We used [Churn in Telecom's dataset](https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset). The dataset contains 3333 rows and 21 columns, giving details on customers' state, account length, area code, phone number, plans, and statistics on service usage such as calls, minutes, and charges across different times of the day, international usage, and customer service interactions, along with churn status.
@@ -43,10 +26,7 @@ We used [Churn in Telecom's dataset](https://www.kaggle.com/datasets/becksddf/ch
 
 Our target valiable is churn, which reflects if a customer terminated contract(1) or did not(0). Target variable is imbalanced, about 15% is class 1 and 85% is class 0. We used SMOTE techniques to balance the data.  
 
-* True Negatives (TN): Correct non-churn predictions.  
-* False Positives (FP): Non-churn instances incorrectly predicted as churn.  
-* False Negatives (FN): Churn instances incorrectly predicted as non-churn.  
-* True Positives (TP): Correct churn predictions.  
+![Class Imbalance](images/class_imbalance)
 
 ## EDA
 
@@ -54,17 +34,21 @@ In the process of EDA we explored all features, their distributions and their re
 
 <img src="images/image8.png" alt="Alt text" width="600"/>
 
-For example we were able to distinguish high risk states - the highest churn rates per state.
+### Geographic Distribution of Churn-Risk
+
+For example we were able to distinguish "higher" and "lower" risk states for churn.
 
 <img src="images/image9.png" alt="Alt text" width="600"/>
 
 ## Models
 
-We used three models - Logistic regression, Decision tree and Random Forest. After comparing perfomance of all three models, we came to a conclusion that with the selected data set the model for prediciting customer churn would be logistic regression.  
-
-**Main metric** for evaluation we used is Recall. It measures the proportion of actual positives (churning customers) correctly identified by the model. High recall is crucial in churn prediction because missing out on identifying a customer who might churn (a false negative) can be costlier than mistakenly identifying a non-churning customer as at risk (a false positive).
+We used three models - Logistic regression, Decision tree and Random Forest. 
 
 <img src="images/image5.png" alt="Alt text" width="600"/>
+
+After comparing perfomance of all three models, we came to the conclusion that with the selected data set the model for prediciting customer churn would be logistic regression.  
+
+Our **Main Metric** for model evaluation was Recall. It measures the proportion of actual positives (churning customers) correctly identified by the model. High recall is crucial in churn prediction because missing out on identifying a customer who might churn (a false negative) can be costlier than mistakenly identifying a non-churning customer as at risk (a false positive).
 
 ## Best Model Evaluation
 
