@@ -14,15 +14,13 @@ Additionally, predictive analytics in churn prevention allows telecom companies 
 
 <img src="images/image2.png" alt="Alt text" width="800"/>
 
-## Stakeholder
+## Data
 
 Syriatel is a telecommunications provider, offering mobile services like domestic and international voice calls, SMS and voice mail to millions of subscribers. The company employs approximately 3,500 employees and serves 8 million customers as of 2016. It is headquartered on Sehnaya Road in Damascus according to [Wikipedia](https://en.wikipedia.org/wiki/Syriatel)
 
-## Data
-
 We used [Churn in Telecom's dataset](https://www.kaggle.com/datasets/becksddf/churn-in-telecoms-dataset). The dataset contains 3333 rows and 21 columns, giving details on customers' state, account length, area code, phone number, plans, and statistics on service usage such as calls, minutes, and charges across different times of the day, international usage, and customer service interactions, along with churn status.
 
-## Target variable - Churn (0 or 1)
+## Target Variable: Churn
 
 Our target valiable is churn, which reflects if a customer terminated contract(1) or did not(0). Target variable is imbalanced, about 15% is class 1 and 85% is class 0. We used SMOTE techniques to balance the data.  
 
@@ -34,12 +32,6 @@ In the process of EDA we explored all features, their distributions and their re
 
 <img src="images/image8.png" alt="Alt text" width="600"/>
 
-### Geographic Distribution of Churn-Risk
-
-For example we were able to distinguish "higher" and "lower" risk states for churn.
-
-<img src="images/image9.png" alt="Alt text" width="600"/>
-
 ## Models
 
 We used three models - Logistic regression, Decision tree and Random Forest. 
@@ -50,41 +42,31 @@ After comparing perfomance of all three models, we came to the conclusion that w
 
 Our **Main Metric** for model evaluation was Recall. It measures the proportion of actual positives (churning customers) correctly identified by the model. High recall is crucial in churn prediction because missing out on identifying a customer who might churn (a false negative) can be costlier than mistakenly identifying a non-churning customer as at risk (a false positive).
 
-## Best Model Evaluation
+## Best Model: Logistic Regression (in need of tuning)
 
-**Model Accuracy:** The logistic regression model achieves an overall accuracy of 79%, indicating a strong ability to correctly predict both churn and non-churn instances.
+Our best model was Logistic Regression, with higher scores predicting churn compared with Random Forest. Our Decision Tree ROC-AUC curve repeatedly indicated some problems in the model's functionality - we'd need more time to assess whether or not that might be a better option through greater tuning.
 
-**Precision and Recall:**
-Non-Churn Predictions (Class 0):
-* Precision: 81% (Proportion of correct non-churn predictions)
-* Recall: 78% (Proportion of actual non-churn instances correctly predicted)
+Though we spent extensive time and effort honing feature selection, normalization, etc...Our logistic regression scores did not improve over the course of this project. Our main metric, **Recall**, is high enough (0.79) that we can suggest this model as a starting point...but more hyperparameter tuning will need to be done to explore the full potential of this model's strengths when predicting churn.
 
-Churn Predictions (Class 1):
-* Precision: 78% (Proportion of correct churn predictions)
-* Recall: 81% (Proportion of actual churn instances correctly predicted)
-
-**F1-Score:** Both classes have an F1-score of 0.79, demonstrating a balanced performance between precision and recall, crucial for maintaining model reliability in both identifying churn and retaining non-churn customers.
-
-**ROC AUC Score:** The model has a ROC AUC score of 0.849, reflecting its excellent capability to distinguish between the churn and non-churn classes. A higher ROC AUC score indicates better model performance in terms of sensitivity (true positive rate) and specificity (true negative rate).
+Furthermore, our Logistic Regression model had an **ROC AUC Score** of 0.84, which is very promising.
 
 <img src="images/image7.png" alt="Alt text" width="700"/>
 
-**Confusion Matrix Analysis:**
-True Negatives (TN): 455 - Correct non-churn predictions.
-False Positives (FP): 130 - Non-churn instances incorrectly predicted as churn.
-False Negatives (FN): 107 - Churn instances incorrectly predicted as non-churn.
-True Positives (TP): 448 - Correct churn predictions.
-This comprehensive analysis demonstrates that the model effectively completes classification tasks, making it an invaluable asset for pinpointing potential churn customers and facilitating targeted retention strategies.
-
-<img src="images/image6.png" alt="Alt text" width="700"/>
+## Feature Selection and Analysis
 
 Most important features for the model:
 
 <img src="images/image3.png" alt="Alt text" width="700"/>
 
+### Geographic Distribution of Churn-Risk
+
+We further distinguished "higher" and "lower" risk states for churn.
+
+<img src="images/image9.png" alt="Alt text" width="600"/>
+
 ## Business Conclusions and Recommendations
 
-Our analysis suggests that machine learning models can be used to accurately predict customer churn. We recommend using logistic regression as the main model for this prediction as it showed better performance in comparison to other models (desicion tree and random forest). Main advantages of logistic regression modeling are simplicity and easier interpretability. Introduing new features for analysis might require reevaluationg best model, as logistic regression shows better perfomance with limited number of features.
+We recommend using logistic regression as the main model for this prediction as it showed better performance in comparison to other models (desicion tree and random forest, however we'd need more time for further hyperparameter tuning in order to explore the full potential for model improvement with regards to it's scores. 
 
 After a thorough analysis, finding the best predictive models and identyfing most importan features, we can propose following business resommendations to lower customer churn:
 
